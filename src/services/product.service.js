@@ -14,8 +14,8 @@ const createProduct = async (req) => {
   req.files.forEach((element) => {
     images.push(element.location);
   });
-
-  const product = { ...req.body, images };
+  const [, ...otherImages] = images;
+  const product = { ...req.body, images: otherImages, featuredImage: images[0] };
   const response = await Product.create(product);
   if (req.body.categories) {
     await req.body.categories.forEach(async (categoryId) => {

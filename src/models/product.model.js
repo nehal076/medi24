@@ -14,6 +14,11 @@ const productSchema = mongoose.Schema(
         ref: 'Category',
       },
     ],
+    featuredImage: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     images: [
       {
         type: String,
@@ -26,21 +31,19 @@ const productSchema = mongoose.Schema(
       required: true,
       trim: true,
     },
-    price: {
+    regularPrice: {
       type: Number,
       required: true,
       trim: true,
     },
-    discount: {
+    salePrice: {
       type: Number,
       required: true,
       trim: true,
     },
-    material: {
-      type: String,
-    },
-    size: {
-      type: String,
+    prescriptionRequired: {
+      type: Boolean,
+      required: true,
     },
   },
   {
