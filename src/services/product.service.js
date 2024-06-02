@@ -55,9 +55,26 @@ const deleteProduct = async (req) => {
   return formatResponse({ message: 'Product Deleted' });
 };
 
+const updateProduct = async (req) => {
+  const { id } = req.query;
+  const product = await Product.findById(id);
+
+  console.log(product);
+
+  const updatedProduct = await Product.updateOne(
+    { _id: product.id },
+    {
+      ...req.body,
+    }
+  );
+
+  return formatResponse({ message: 'Product Updated', data: updatedProduct });
+};
+
 module.exports = {
   createProduct,
   getAllProducts,
   getHomeSections,
   deleteProduct,
+  updateProduct,
 };

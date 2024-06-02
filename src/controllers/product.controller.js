@@ -22,9 +22,15 @@ const deleteProduct = catchAsync(async (req, res) => {
   res.status(httpStatus.OK).send(product);
 });
 
+const updateProduct = catchAsync(async (req, res) => {
+  const product = await productService.updateProduct(req);
+  res.status(httpStatus.OK).send(product);
+});
+
 module.exports = {
   createProduct,
   getAllProducts,
   getHomeSections,
   deleteProduct,
+  updateProduct,
 };
